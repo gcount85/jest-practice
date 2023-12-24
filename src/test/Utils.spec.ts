@@ -1,4 +1,9 @@
-import ToUpperCase, { getStringInfo, stringInfo } from "../app/Utils";
+import {
+  StringUtils,
+  ToUpperCase,
+  getStringInfo,
+  stringInfo,
+} from "../app/Utils";
 
 describe("Utils test suites", () => {
   it("should return uppercase of valid string", () => {
@@ -13,7 +18,7 @@ describe("Utils test suites", () => {
     expect(actual).toBe(expected);
   });
 
-  it.only("should return string info of valid string", () => {
+  it("should return string info of valid string", () => {
     // arange:
     const sut = getStringInfo;
     const expected: stringInfo = {
@@ -39,5 +44,50 @@ describe("Utils test suites", () => {
     expect(expected.extraInfo).toBeDefined();
     expect(expected.extraInfo).toBeTruthy();
     expect(expected.extraInfo).toEqual({});
+  });
+});
+
+describe("toUpperCase examples", () => {
+  it.each([
+    {
+      input: "abc",
+      expected: "ABC",
+    },
+    {
+      input: "blue",
+      expected: "BLUE",
+    },
+  ])("$input should be $expected", ({ input, expected }) => {
+    // arrange
+    const sut = ToUpperCase;
+
+    // act
+    const actual = sut(input);
+
+    //assert
+    expect(actual).toEqual(expected);
+  });
+});
+
+// jest hooks: beforeEach, afterEach
+describe.only("StringUtils test", () => {
+  let sut: StringUtils;
+
+  beforeEach(() => {
+    // arrance
+    sut = new StringUtils();
+    console.log("setup!");
+  });
+
+  afterEach(() => {
+    console.log("cleanup!");
+  });
+
+  it("should return upperCase", () => {
+    console.log("test!");
+
+    const actual = sut.toUpperCase("abc");
+
+    expect(actual).toEqual("ABC");
   });
 });

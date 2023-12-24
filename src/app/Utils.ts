@@ -1,4 +1,10 @@
-export default function ToUpperCase(arg: string) {
+export class StringUtils {
+  public toUpperCase(arg: string) {
+    return ToUpperCase(arg);
+  }
+}
+
+export function ToUpperCase(arg: string) {
   return arg.toUpperCase();
 }
 
