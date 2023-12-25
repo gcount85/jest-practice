@@ -70,7 +70,7 @@ describe("toUpperCase examples", () => {
 });
 
 // jest hooks: beforeEach, afterEach
-describe.only("StringUtils test", () => {
+describe("StringUtils test", () => {
   let sut: StringUtils;
 
   beforeEach(() => {
